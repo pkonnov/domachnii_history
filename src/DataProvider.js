@@ -27,7 +27,7 @@ class DataProvider extends Component {
 
   }
 
-  showHistory = () => {
+  showHistory = (props) => {
     this.setState({
       isShowHistory: !this.state.isShowHistory
     })
@@ -36,8 +36,8 @@ class DataProvider extends Component {
   render(){
     return(
       <div className="row d-flex justify-content-center">
-        {this.state.history.map((item) => (
-          <div className={classes.DataProvider + " col-sm-6 my-2"} key={item.id}>
+        {this.state.history.map((item, index) => (
+          <div className={classes.DataProvider + " col-sm-6 my-2"} key={index}>
           <img src={item.image_lead} />
           <h3>{item.name}</h3>
           {ReactHtmlParser(this.state.isShowHistory ? item.history : null)}

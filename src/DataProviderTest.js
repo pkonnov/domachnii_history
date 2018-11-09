@@ -3,14 +3,14 @@ import axios from 'axios'
 import classes from './DataProvider.css'
 import ReactHtmlParser from 'react-html-parser'
 
-class DataProvider extends Component {
+class DataProviderTest extends Component {
 
   constructor(props){
     super(props)
     this.state = {
       history: [],
       isShowHistory: false,
-      activeHistory: null,
+      activeHistory: 0,
     }
   }
 
@@ -33,14 +33,21 @@ class DataProvider extends Component {
     })
   }
 
+  getHistory = () => {
+    if (!this.isShowHistory){
+      return <p>{ReactHtmlParser(this.state.isShowHistory ? this.state.item.history : null)}</p>;
+    }
+  }
+
   render(){
+    const getHistory = this.getHistory
     return(
       <div className="row d-flex justify-content-center">
         {this.state.history.map((item) => (
           <div className={classes.DataProvider + " col-sm-6 my-2"} key={item.id}>
           <img src={item.image_lead} />
           <h3>{item.name}</h3>
-          {ReactHtmlParser(this.state.isShowHistory ? item.history : null)}
+          {getHistory}
           <button className={classes.Button} onClick={this.showHistory}>{!this.state.isShowHistory ? 'Показать историю' : 'Скрыть историю'}</button>
           </div>
         ))}
@@ -50,4 +57,4 @@ class DataProvider extends Component {
 }
 
 
-export default DataProvider
+export default DataProviderTest

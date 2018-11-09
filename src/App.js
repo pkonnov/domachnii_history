@@ -13,7 +13,7 @@ class App extends Component {
 
   componentDidMount(){
 
-     axios.get('http://127.0.0.1:8000/restapi/api/lead/', {method: 'HEAD', mode: 'no-cors'})
+     axios.get('https://sprmspc.ru/restapi/api/lead/', {method: 'HEAD', mode: 'no-cors'})
      .then(response => {
        let history = response.data
        this.setState({
@@ -23,21 +23,22 @@ class App extends Component {
      })
   }
 
-  showHistory = (props) => {
+  showHistory = () => {
     this.setState({
       isShowHistory: !this.state.isShowHistory
     })
   }
 
   render() {
-    const history = this.state.history.map(h => {
-      <DataProviderTest
-        key={h.id}
-        history={h.history}
-        name={h.name}
-        image={h.image_lead}
-        showHistory={this.showHistory}
-      />
+    const history = this.state.history.map((h, index) => {
+      return (<DataProviderTest
+                key={h.id}
+                id={h.id}
+                name={h.name}
+                history={h.history}
+                image={h.image_lead}
+                showHistory={this.showHistory.bind(this, h.history)}
+              />)
     })
     return (
       <div className="container">

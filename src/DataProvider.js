@@ -41,7 +41,10 @@ class DataProvider extends Component {
           <img src={item.image_lead} />
           <h3>{item.name}</h3>
           {ReactHtmlParser(this.state.isShowHistory ? item.history : null)}
-          <button className={classes.Button} onClick={this.showHistory}>{!this.state.isShowHistory ? 'Показать историю' : 'Скрыть историю'}</button>
+          <button className={classes.Button}
+            onClick={this.showHistory}>
+            {!this.state.isShowHistory ? 'Показать историю' : 'Скрыть историю'}
+          </button>
           </div>
         ))}
       </div>

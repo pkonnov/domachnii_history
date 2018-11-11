@@ -17,19 +17,21 @@ class HistoryList extends Component {
   }
 
 
-  render(){
+  render() {
     const id = this.props.data.id,
           name =  this.props.data.name,
           history =  this.props.data.history,
           image_lead =  this.props.data.image_lead
-    return(
-      <div className={classes.DataProvider + " col-sm-6 my-2"}>
-      <img src={image_lead} />
-      <h3>{name}</h3>
-      {ReactHtmlParser(this.state.isShowHistory && history)}
-      <button className={classes.Button} onClick={this.showHistory}>
-        {!this.state.isShowHistory ? 'Показать историю' : 'Скрыть историю'}
-      </button>
+    return (
+      <div className={classes.DataProvider + " col-sm-6 m-2 p-0"}>
+        <img src={image_lead} alt="" />
+        <h3 className={"m-1"}>{name}</h3>
+        <p className="m-2">
+          {ReactHtmlParser(this.state.isShowHistory && history)}
+        </p>
+        <button className={classes.Button + " m-1"} onClick={this.showHistory}>
+          {!this.state.isShowHistory ? 'Показать историю' : 'Скрыть историю'}
+        </button>
       </div>
     )
   }

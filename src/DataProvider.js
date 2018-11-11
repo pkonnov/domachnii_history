@@ -14,7 +14,7 @@ class DataProvider extends Component {
 
  componentDidMount(){
 
-    axios.get('https://localhost.ru/restapi/api/lead/', {method: 'HEAD', mode: 'no-cors'})
+    axios.get('https://sprmspc.ru/restapi/api/lead/') // {method: 'HEAD', mode: 'no-cors'}
     .then(response => {
       let history = response.data
       this.setState({
@@ -27,14 +27,14 @@ class DataProvider extends Component {
 
 
   render(){
-    const historyList = this.state.history.map(item => {
-      return (
-        <div key={item.id}>
-            <HistoryList data={item} />
-        </div>
-      )
-    })
-    return(
+    const historyList = this.state.history.map(item => (
+      <HistoryList
+        data={item}
+        key={item.id}
+      />
+    ))
+
+    return (
       <div className="row d-flex justify-content-center">
         {historyList}
       </div>

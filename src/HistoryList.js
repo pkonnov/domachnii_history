@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import classes from './DataProvider.css'
+import classes from './History.css'
 import ReactHtmlParser from 'react-html-parser'
 
 class HistoryList extends Component {
@@ -16,14 +16,13 @@ class HistoryList extends Component {
     })
   }
 
-
   render() {
     const id = this.props.data.id,
           name =  this.props.data.name,
           history =  this.props.data.history,
           image_lead =  this.props.data.image_lead
     return (
-      <div className={classes.DataProvider + " col-sm-6 m-2 p-0"}>
+      <div className={classes.History + " col-sm-6 m-2 p-0"}>
         <img src={image_lead} alt="" />
         <h3 className={"m-1"}>{name}</h3>
         <p className="m-2">
